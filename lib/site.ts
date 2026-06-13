@@ -7,3 +7,6 @@ export const SITE_URL =
 export const SITE_NAME = "Take-Home Pay Calculator";
 export const BRAND = "MyNetPaycheck";
 export const CONTACT_EMAIL = "hello@mynetpaycheck.com";
+
+// Google Analytics 4 measurement ID (public; embedded in client HTML).
+export const GA_ID = "G-3WVGGCWTTE";
