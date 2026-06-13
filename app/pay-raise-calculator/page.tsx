@@ -4,7 +4,7 @@ import RaiseCalculator from "@/components/RaiseCalculator";
 import { SITE_URL } from "@/lib/site";
 import { EXTRA_TOOLS } from "@/lib/tools";
 
-const TITLE = "Pay Raise Calculator — How Much More After Taxes? (2025)";
+const TITLE = "Pay Raise Calculator — How Much More After Taxes? (2026)";
 const DESC =
   "See how a pay raise changes your take-home pay. Enter your salary and raise (percent or amount) to find your new net pay and how much of the raise you keep after taxes.";
 

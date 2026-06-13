@@ -203,7 +203,7 @@ export default function PaycheckCalculator({
         </div>
 
         <p className="mt-3 text-xs text-indigo-200">
-          Estimate based on 2025 federal rates and the latest published state rates. For planning only — not tax
+          Estimate based on 2026 federal rates and the latest published state rates. For planning only — not tax
           advice. Excludes local taxes, SDI, and other withholdings.
         </p>
       </div>

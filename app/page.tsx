@@ -7,7 +7,7 @@ import { EXTRA_TOOLS } from "@/lib/tools";
 const FAQ = [
   {
     q: "How do I calculate my take-home pay?",
-    a: "Start with your gross pay, then subtract federal income tax, Social Security (6.2%), Medicare (1.45%), and any state income tax. Pre-tax deductions such as a traditional 401(k) reduce your taxable income. This calculator does all of that automatically for the 2025 tax year — just enter your salary, state, and filing status.",
+    a: "Start with your gross pay, then subtract federal income tax, Social Security (6.2%), Medicare (1.45%), and any state income tax. Pre-tax deductions such as a traditional 401(k) reduce your taxable income. This calculator does all of that automatically for the 2026 tax year — just enter your salary, state, and filing status.",
   },
   {
     q: "What is the difference between gross pay and net pay?",
@@ -64,7 +64,7 @@ export default function Home() {
         <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Take-Home Pay Calculator</h1>
         <p className="mx-auto mt-3 max-w-2xl text-slate-600">
           Find out exactly how much of your paycheck you keep after federal, state, Social Security, and Medicare
-          taxes. Updated for the 2025 tax year — for all 50 states and Washington, D.C.
+          taxes. Updated for the 2026 tax year — for all 50 states and Washington, D.C.
         </p>
       </section>
 
@@ -109,7 +109,7 @@ export default function Home() {
           Your take-home (net) pay is your gross pay minus taxes and pre-tax deductions. The biggest pieces are federal
           income tax (a progressive bracket system), Social Security (6.2% up to the annual wage base), Medicare (1.45%),
           and — depending on where you live — state income tax. Pre-tax contributions like a traditional 401(k) lower
-          your income tax but not Social Security and Medicare. This calculator applies the 2025 federal brackets and
+          your income tax but not Social Security and Medicare. This calculator applies the 2026 federal brackets and
           each state&apos;s current rates to estimate your net pay for any salary or hourly wage.
         </p>
       </section>

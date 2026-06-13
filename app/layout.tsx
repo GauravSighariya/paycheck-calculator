@@ -9,9 +9,9 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const DEFAULT_TITLE = "Take-Home Pay Calculator — Paycheck Estimator by State (2025)";
+const DEFAULT_TITLE = "Take-Home Pay Calculator — Paycheck Estimator by State (2026)";
 const DEFAULT_DESC =
-  "Free take-home pay calculator. See your net paycheck after federal, state, Social Security, and Medicare taxes for 2025 — by state, salary, and filing status.";
+  "Free take-home pay calculator. See your net paycheck after federal, state, Social Security, and Medicare taxes for 2026 — by state, salary, and filing status.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -53,7 +53,7 @@ export default function RootLayout({
               <span className="grid h-8 w-8 place-items-center rounded-lg bg-indigo-600 text-white">$</span>
               {SITE_NAME}
             </Link>
-            <nav className="text-sm text-slate-500">2025 tax year</nav>
+            <nav className="text-sm text-slate-500">2026 tax year</nav>
           </div>
         </header>
         <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8">{children}</main>
@@ -66,7 +66,7 @@ export default function RootLayout({
               <Link href="/privacy" className="hover:text-indigo-600">Privacy Policy</Link>
             </nav>
             <p className="text-xs text-slate-500">
-              Estimates for planning only — not tax or financial advice. Figures use 2025 federal rates and the
+              Estimates for planning only — not tax or financial advice. Figures use 2026 federal rates and the
               latest published state rates and may not reflect local taxes or every deduction.
             </p>
           </div>

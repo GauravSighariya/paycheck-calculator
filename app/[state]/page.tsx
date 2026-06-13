@@ -20,8 +20,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { state } = await params;
   const info = getState(state);
   if (!info) return {};
-  const title = `${info.name} Paycheck Calculator — Take-Home Pay After Taxes (2025)`;
-  const description = `Calculate your ${info.name} take-home pay for 2025. See your net paycheck after federal income tax, ${info.hasIncomeTax ? `${info.name} state tax, ` : ""}Social Security, and Medicare — by salary and filing status.`;
+  const title = `${info.name} Paycheck Calculator — Take-Home Pay After Taxes (2026)`;
+  const description = `Calculate your ${info.name} take-home pay for 2026. See your net paycheck after federal income tax, ${info.hasIncomeTax ? `${info.name} state tax, ` : ""}Social Security, and Medicare — by salary and filing status.`;
   const url = `${SITE_URL}/${info.slug}`;
   return {
     title,
@@ -163,7 +163,7 @@ export default async function StatePage({ params }: Props) {
           Take-home pay at common salaries in {info.name}
         </h2>
         <p className="mb-3 text-sm text-slate-500">
-          Estimated net pay for a single filer with no pre-tax deductions, 2025 rates.
+          Estimated net pay for a single filer with no pre-tax deductions, 2026 rates.
         </p>
         <div className="overflow-hidden rounded-xl border border-slate-200">
           <table className="w-full text-left text-sm">
@@ -192,7 +192,7 @@ export default async function StatePage({ params }: Props) {
       {summary && info.brackets && (
         <section>
           <h2 className="mb-3 text-xl font-semibold text-slate-900">
-            {info.name} state income tax brackets (2025, single filer)
+            {info.name} state income tax brackets (2026, single filer)
           </h2>
           <div className="overflow-hidden rounded-xl border border-slate-200">
             <table className="w-full text-left text-sm">

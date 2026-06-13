@@ -141,7 +141,7 @@ export default function RaiseCalculator() {
 
         <p className="mt-3 text-xs text-indigo-200">
           A raise is taxed at your <strong>marginal</strong> rate, so you keep less than the full amount. Estimate for
-          2025; excludes local taxes and other withholdings.
+          2026; excludes local taxes and other withholdings.
         </p>
       </div>
     </div>

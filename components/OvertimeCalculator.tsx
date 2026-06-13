@@ -146,7 +146,7 @@ export default function OvertimeCalculator() {
 
         <p className="mt-3 text-xs text-indigo-200">
           Under federal law (FLSA), non-exempt employees earn at least 1.5× their regular rate for hours over 40 in a
-          week. Take-home is an estimate for 2025; excludes local taxes and other withholdings.
+          week. Take-home is an estimate for 2026; excludes local taxes and other withholdings.
         </p>
       </div>
     </div>

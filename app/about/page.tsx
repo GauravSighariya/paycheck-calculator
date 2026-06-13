@@ -21,7 +21,7 @@ export default function AboutPage() {
       <h2 className="text-xl font-semibold text-slate-900">How the estimates are calculated</h2>
       <p>Each estimate combines four components:</p>
       <ul className="list-inside list-disc space-y-1">
-        <li><strong>Federal income tax</strong> — the 2025 progressive bracket schedule and standard deduction by filing status.</li>
+        <li><strong>Federal income tax</strong> — the 2026 progressive bracket schedule and standard deduction by filing status.</li>
         <li><strong>Social Security</strong> — 6.2% up to the annual Social Security wage base.</li>
         <li><strong>Medicare</strong> — 1.45%, plus the 0.9% Additional Medicare Tax above the IRS threshold.</li>
         <li><strong>State income tax</strong> — current rates and brackets for all 50 states and Washington, D.C., including no-tax, flat-tax, and progressive states.</li>
@@ -33,8 +33,8 @@ export default function AboutPage() {
 
       <h2 className="text-xl font-semibold text-slate-900">Data sources</h2>
       <p>
-        Federal figures follow IRS inflation-adjusted amounts for the 2025 tax year. State income-tax rates and brackets
-        are based on the Tax Foundation&apos;s published 2025 state individual income tax data. We review the figures as new
+        Federal figures follow IRS inflation-adjusted amounts for the 2026 tax year. State income-tax rates and brackets
+        are based on the Tax Foundation&apos;s published 2026 state individual income tax data. We review the figures as new
         tax-year data is released.
       </p>
 

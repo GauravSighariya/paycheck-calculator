@@ -4,9 +4,9 @@ import BonusCalculator from "@/components/BonusCalculator";
 import { SITE_URL } from "@/lib/site";
 import { EXTRA_TOOLS } from "@/lib/tools";
 
-const TITLE = "Bonus Tax Calculator — How Much Is My Bonus Taxed? (2025)";
+const TITLE = "Bonus Tax Calculator — How Much Is My Bonus Taxed? (2026)";
 const DESC =
-  "Find out how much of your bonus you keep after taxes in 2025. Calculate federal, state, Social Security, and Medicare tax on your bonus by salary, state, and filing status.";
+  "Find out how much of your bonus you keep after taxes in 2026. Calculate federal, state, Social Security, and Medicare tax on your bonus by salary, state, and filing status.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 const faq = [
   {
-    q: "How much is a bonus taxed in 2025?",
+    q: "How much is a bonus taxed in 2026?",
     a: "For federal withholding, employers usually treat a bonus as supplemental income and withhold a flat 22% (37% on amounts over $1 million). Social Security (6.2%) and Medicare (1.45%) also apply, plus any state income tax. Your actual tax depends on your marginal bracket — the calculator above shows what you really keep.",
   },
   {
@@ -54,7 +54,7 @@ export default function BonusPage() {
         <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Bonus Tax Calculator</h1>
         <p className="mt-3 max-w-2xl text-slate-600">
           Getting a bonus? See how much you&apos;ll actually take home after federal, state, Social Security, and Medicare
-          taxes — based on your salary, state, and filing status, for the 2025 tax year.
+          taxes — based on your salary, state, and filing status, for the 2026 tax year.
         </p>
       </section>
 

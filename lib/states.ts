@@ -10,10 +10,11 @@ export interface StateInfo extends StateTax {
 }
 
 // ----------------------------------------------------------------------------
-// Data source: Tax Foundation, "2025 State Individual Income Tax Rates and
+// Data source: Tax Foundation, "2026 State Individual Income Tax Rates and
 // Brackets" + flat/no-tax classifications. Figures are estimates for planning
 // only — see disclaimer in the UI. State standard deductions for states that
-// use personal exemptions/credits instead are approximated.
+// use personal exemptions/credits instead are approximated; states that conform
+// to the federal standard deduction use the 2026 federal amounts.
 // ----------------------------------------------------------------------------
 
 // Pairs are [ratePercent, lowerThreshold]. Converted to upper-bound brackets.
@@ -52,53 +53,53 @@ const RAW: Raw[] = [
   { slug: "washington", name: "Washington", abbr: "WA", kind: "none", note: "Washington taxes certain high-earner capital gains, but not wage income." },
   { slug: "wyoming", name: "Wyoming", abbr: "WY", kind: "none" },
 
-  // ---- Flat tax ----
-  { slug: "arizona", name: "Arizona", abbr: "AZ", kind: "flat", flat: 2.5, std: [15000, 30000] },
-  { slug: "colorado", name: "Colorado", abbr: "CO", kind: "flat", flat: 4.4, std: [15000, 30000] },
-  { slug: "georgia", name: "Georgia", abbr: "GA", kind: "flat", flat: 5.39, std: [12000, 24000] },
-  { slug: "idaho", name: "Idaho", abbr: "ID", kind: "flat", flat: 5.695, std: [15000, 30000] },
-  { slug: "illinois", name: "Illinois", abbr: "IL", kind: "flat", flat: 4.95, std: [2775, 5550] },
-  { slug: "indiana", name: "Indiana", abbr: "IN", kind: "flat", flat: 3.0, std: [1000, 2000], note: "Indiana counties levy additional local income taxes (not included here)." },
-  { slug: "iowa", name: "Iowa", abbr: "IA", kind: "flat", flat: 3.8, std: [15000, 30000] },
-  { slug: "kentucky", name: "Kentucky", abbr: "KY", kind: "flat", flat: 4.0, std: [3270, 6540], note: "Many Kentucky localities levy a local occupational/payroll tax (not included here)." },
+  // ---- Flat tax (2026 rates) ----
+  { slug: "arizona", name: "Arizona", abbr: "AZ", kind: "flat", flat: 2.5, std: [16100, 32200] },
+  { slug: "colorado", name: "Colorado", abbr: "CO", kind: "flat", flat: 4.4, std: [16100, 32200] },
+  { slug: "georgia", name: "Georgia", abbr: "GA", kind: "flat", flat: 5.19, std: [12000, 24000] },
+  { slug: "idaho", name: "Idaho", abbr: "ID", kind: "flat", flat: 5.3, std: [16100, 32200] },
+  { slug: "illinois", name: "Illinois", abbr: "IL", kind: "flat", flat: 4.95, std: [2850, 5700] },
+  { slug: "indiana", name: "Indiana", abbr: "IN", kind: "flat", flat: 2.95, std: [1000, 2000], note: "Indiana counties levy additional local income taxes (not included here)." },
+  { slug: "iowa", name: "Iowa", abbr: "IA", kind: "flat", flat: 3.8, std: [16100, 32200] },
+  { slug: "kentucky", name: "Kentucky", abbr: "KY", kind: "flat", flat: 3.5, std: [3330, 6660], note: "Many Kentucky localities levy a local occupational/payroll tax (not included here)." },
   { slug: "louisiana", name: "Louisiana", abbr: "LA", kind: "flat", flat: 3.0, std: [4500, 9000] },
-  { slug: "michigan", name: "Michigan", abbr: "MI", kind: "flat", flat: 4.25, std: [5600, 11200], note: "Some Michigan cities (e.g., Detroit) levy a local income tax (not included here)." },
-  { slug: "north-carolina", name: "North Carolina", abbr: "NC", kind: "flat", flat: 4.25, std: [12750, 25500] },
+  { slug: "michigan", name: "Michigan", abbr: "MI", kind: "flat", flat: 4.25, std: [5800, 11600], note: "Some Michigan cities (e.g., Detroit) levy a local income tax (not included here)." },
+  { slug: "north-carolina", name: "North Carolina", abbr: "NC", kind: "flat", flat: 3.99, std: [12750, 25500] },
   { slug: "pennsylvania", name: "Pennsylvania", abbr: "PA", kind: "flat", flat: 3.07, std: [0, 0], note: "Most Pennsylvania municipalities add a local earned income tax (not included here)." },
-  { slug: "utah", name: "Utah", abbr: "UT", kind: "flat", flat: 4.55, std: [15000, 30000] },
+  { slug: "utah", name: "Utah", abbr: "UT", kind: "flat", flat: 4.5, std: [16100, 32200] },
 
-  // Mississippi: flat 4.4% above a $10,000 exemption.
-  { slug: "mississippi", name: "Mississippi", abbr: "MS", kind: "progressive", single: [[0, 0], [4.4, 10000]], married: [[0, 0], [4.4, 10000]], std: [2300, 4600], note: "The first $10,000 of taxable income is exempt in Mississippi." },
+  // Mississippi: flat 4.0% (2026) above a $10,000 exemption.
+  { slug: "mississippi", name: "Mississippi", abbr: "MS", kind: "progressive", single: [[0, 0], [4.0, 10000]], married: [[0, 0], [4.0, 10000]], std: [2300, 4600], note: "The first $10,000 of taxable income is exempt in Mississippi." },
 
-  // ---- Progressive ----
+  // ---- Progressive (2026) ----
   { slug: "alabama", name: "Alabama", abbr: "AL", kind: "progressive", single: [[2, 0], [4, 500], [5, 3000]], married: [[2, 0], [4, 1000], [5, 6000]], std: [3000, 8500], note: "Some Alabama municipalities levy a local occupational tax (not included here)." },
-  { slug: "arkansas", name: "Arkansas", abbr: "AR", kind: "progressive", single: [[2, 0], [3.9, 4500]], married: [[2, 0], [3.9, 4500]], std: [2410, 4820] },
-  { slug: "california", name: "California", abbr: "CA", kind: "progressive", single: [[1, 0], [2, 10412], [4, 24684], [6, 38959], [8, 54081], [9.3, 68350], [10.3, 349137], [11.3, 418961], [12.3, 698271]], married: [[1, 0], [2, 20824], [4, 49368], [6, 77918], [8, 108162], [9.3, 136700], [10.3, 698274], [11.3, 837922], [12.3, 1396542]], std: [5540, 11080], note: "California also withholds State Disability Insurance (SDI), which is not included here." },
+  { slug: "arkansas", name: "Arkansas", abbr: "AR", kind: "progressive", single: [[2, 0], [3.9, 4600]], married: [[2, 0], [3.9, 4600]], std: [2470, 4940] },
+  { slug: "california", name: "California", abbr: "CA", kind: "progressive", single: [[1, 0], [2, 11079], [4, 26264], [6, 41452], [8, 57542], [9.3, 72724], [10.3, 371479], [11.3, 445771], [12.3, 742953], [13.3, 1000000]], married: [[1, 0], [2, 22158], [4, 52528], [6, 82904], [8, 115084], [9.3, 145448], [10.3, 742958], [11.3, 891542], [12.3, 1000000], [13.3, 1485906]], std: [5540, 11080], note: "California also withholds State Disability Insurance (SDI), which is not included here." },
   { slug: "connecticut", name: "Connecticut", abbr: "CT", kind: "progressive", single: [[2, 0], [4.5, 10000], [5.5, 50000], [6, 100000], [6.5, 200000], [6.9, 250000], [6.99, 500000]], married: [[2, 0], [4.5, 20000], [5.5, 100000], [6, 200000], [6.5, 400000], [6.9, 500000], [6.99, 1000000]], std: [0, 0] },
   { slug: "delaware", name: "Delaware", abbr: "DE", kind: "progressive", single: [[2.2, 2000], [3.9, 5000], [4.8, 10000], [5.2, 20000], [5.55, 25000], [6.6, 60000]], married: [[2.2, 2000], [3.9, 5000], [4.8, 10000], [5.2, 20000], [5.55, 25000], [6.6, 60000]], std: [3250, 6500] },
-  { slug: "district-of-columbia", name: "District of Columbia", abbr: "DC", kind: "progressive", single: [[4, 0], [6, 10000], [6.5, 40000], [8.5, 60000], [9.25, 250000], [9.75, 500000], [10.75, 1000000]], married: [[4, 0], [6, 10000], [6.5, 40000], [8.5, 60000], [9.25, 250000], [9.75, 500000], [10.75, 1000000]], std: [15000, 30000] },
+  { slug: "district-of-columbia", name: "District of Columbia", abbr: "DC", kind: "progressive", single: [[4, 0], [6, 10000], [6.5, 40000], [8.5, 60000], [9.25, 250000], [9.75, 500000], [10.75, 1000000]], married: [[4, 0], [6, 10000], [6.5, 40000], [8.5, 60000], [9.25, 250000], [9.75, 500000], [10.75, 1000000]], std: [16100, 32200] },
   { slug: "hawaii", name: "Hawaii", abbr: "HI", kind: "progressive", single: [[1.4, 0], [3.2, 9600], [5.5, 14400], [6.4, 19200], [6.8, 24000], [7.2, 36000], [7.6, 48000], [7.9, 125000], [8.25, 175000], [9, 225000], [10, 275000], [11, 325000]], married: [[1.4, 0], [3.2, 19200], [5.5, 28800], [6.4, 38400], [6.8, 48000], [7.2, 72000], [7.6, 96000], [7.9, 250000], [8.25, 350000], [9, 450000], [10, 550000], [11, 650000]], std: [4400, 8800] },
   { slug: "kansas", name: "Kansas", abbr: "KS", kind: "progressive", single: [[5.2, 0], [5.58, 23000]], married: [[5.2, 0], [5.58, 46000]], std: [3605, 8240] },
-  { slug: "maine", name: "Maine", abbr: "ME", kind: "progressive", single: [[5.8, 0], [6.75, 26800], [7.15, 63450]], married: [[5.8, 0], [6.75, 53600], [7.15, 126900]], std: [15000, 30000] },
-  { slug: "maryland", name: "Maryland", abbr: "MD", kind: "progressive", single: [[2, 0], [3, 1000], [4, 2000], [4.75, 3000], [5, 100000], [5.25, 125000], [5.5, 150000], [5.75, 250000]], married: [[2, 0], [3, 1000], [4, 2000], [4.75, 3000], [5, 150000], [5.25, 175000], [5.5, 225000], [5.75, 300000]], std: [2700, 5450], note: "Maryland counties levy a local income tax on top of the state rate (not included here)." },
+  { slug: "maine", name: "Maine", abbr: "ME", kind: "progressive", single: [[5.8, 0], [6.75, 27399], [7.15, 64849]], married: [[5.8, 0], [6.75, 54849], [7.15, 129749]], std: [16100, 32200] },
+  { slug: "maryland", name: "Maryland", abbr: "MD", kind: "progressive", single: [[2, 0], [3, 1000], [4, 2000], [4.75, 3000], [5, 100000], [5.25, 125000], [5.5, 150000], [5.75, 250000], [6.25, 500000], [6.5, 1000000]], married: [[2, 0], [3, 1000], [4, 2000], [4.75, 3000], [5, 150000], [5.25, 175000], [5.5, 225000], [5.75, 300000], [6.25, 600000], [6.5, 1200000]], std: [3350, 6700], note: "Maryland counties levy a local income tax on top of the state rate (not included here)." },
   { slug: "massachusetts", name: "Massachusetts", abbr: "MA", kind: "progressive", single: [[5, 0], [9, 1083150]], married: [[5, 0], [9, 1083150]], std: [4400, 8800] },
-  { slug: "minnesota", name: "Minnesota", abbr: "MN", kind: "progressive", single: [[5.35, 0], [6.8, 32570], [7.85, 106990], [9.85, 198630]], married: [[5.35, 0], [6.8, 47620], [7.85, 189180], [9.85, 330410]], std: [14950, 29900] },
-  { slug: "missouri", name: "Missouri", abbr: "MO", kind: "progressive", single: [[2, 1313], [2.5, 2626], [3, 3939], [3.5, 5252], [4, 6565], [4.5, 7878], [4.7, 9191]], married: [[2, 1313], [2.5, 2626], [3, 3939], [3.5, 5252], [4, 6565], [4.5, 7878], [4.7, 9191]], std: [15000, 30000], note: "Kansas City and St. Louis levy a 1% local earnings tax (not included here)." },
-  { slug: "montana", name: "Montana", abbr: "MT", kind: "progressive", single: [[4.7, 0], [5.9, 21100]], married: [[4.7, 0], [5.9, 42200]], std: [15000, 30000] },
-  { slug: "nebraska", name: "Nebraska", abbr: "NE", kind: "progressive", single: [[2.46, 0], [3.51, 4030], [5.01, 24120], [5.2, 38870]], married: [[2.46, 0], [3.51, 8040], [5.01, 48250], [5.2, 77730]], std: [8600, 17200] },
-  { slug: "new-jersey", name: "New Jersey", abbr: "NJ", kind: "progressive", single: [[1.4, 0], [1.75, 20000], [3.5, 35000], [5.525, 40000], [6.37, 75000], [8.97, 500000], [10.75, 1000000]], married: [[1.4, 0], [1.75, 20000], [2.45, 50000], [3.5, 70000], [5.525, 80000], [6.37, 150000], [8.97, 500000], [10.75, 1000000]], std: [0, 0] },
-  { slug: "new-mexico", name: "New Mexico", abbr: "NM", kind: "progressive", single: [[1.5, 0], [3.2, 5500], [4.3, 16500], [4.7, 33500], [4.9, 66500], [5.9, 210000]], married: [[1.5, 0], [3.2, 8000], [4.3, 25000], [4.7, 50000], [4.9, 100000], [5.9, 315000]], std: [15000, 30000] },
-  { slug: "new-york", name: "New York", abbr: "NY", kind: "progressive", single: [[4, 0], [4.5, 8500], [5.25, 11700], [5.5, 13900], [6, 80650], [6.85, 215400], [9.65, 1077550], [10.3, 5000000], [10.9, 25000000]], married: [[4, 0], [4.5, 17150], [5.25, 23600], [5.5, 27900], [6, 161550], [6.85, 323200], [9.65, 2155350], [10.3, 5000000], [10.9, 25000000]], std: [8000, 16050], note: "New York City and Yonkers residents owe an additional local income tax (not included here)." },
-  { slug: "north-dakota", name: "North Dakota", abbr: "ND", kind: "progressive", single: [[1.95, 48475], [2.5, 244825]], married: [[1.95, 80975], [2.5, 298075]], std: [15000, 30000] },
-  { slug: "ohio", name: "Ohio", abbr: "OH", kind: "progressive", single: [[2.75, 26050], [3.5, 100000]], married: [[2.75, 26050], [3.5, 100000]], std: [0, 0], note: "Many Ohio cities levy a local income tax (not included here); income below ~$26,050 is untaxed by the state." },
-  { slug: "oklahoma", name: "Oklahoma", abbr: "OK", kind: "progressive", single: [[0.25, 0], [0.75, 1000], [1.75, 2500], [2.75, 3750], [3.75, 4900], [4.75, 7200]], married: [[0.25, 0], [0.75, 2000], [1.75, 5000], [2.75, 7500], [3.75, 9800], [4.75, 14400]], std: [6350, 12700] },
-  { slug: "oregon", name: "Oregon", abbr: "OR", kind: "progressive", single: [[4.75, 0], [6.75, 4400], [8.75, 11050], [9.9, 125000]], married: [[4.75, 0], [6.75, 8800], [8.75, 22100], [9.9, 250000]], std: [2800, 5600] },
-  { slug: "rhode-island", name: "Rhode Island", abbr: "RI", kind: "progressive", single: [[3.75, 0], [4.75, 79900], [5.99, 181650]], married: [[3.75, 0], [4.75, 79900], [5.99, 181650]], std: [10900, 21800] },
-  { slug: "south-carolina", name: "South Carolina", abbr: "SC", kind: "progressive", single: [[0, 0], [3, 3560], [6.2, 17830]], married: [[0, 0], [3, 3560], [6.2, 17830]], std: [15000, 30000] },
-  { slug: "vermont", name: "Vermont", abbr: "VT", kind: "progressive", single: [[3.35, 0], [6.6, 47900], [7.6, 116000], [8.75, 242000]], married: [[3.35, 0], [6.6, 79950], [7.6, 193300], [8.75, 294600]], std: [7400, 14850] },
-  { slug: "virginia", name: "Virginia", abbr: "VA", kind: "progressive", single: [[2, 0], [3, 3000], [5, 5000], [5.75, 17000]], married: [[2, 0], [3, 3000], [5, 5000], [5.75, 17000]], std: [8500, 17000] },
+  { slug: "minnesota", name: "Minnesota", abbr: "MN", kind: "progressive", single: [[5.35, 0], [6.8, 33310], [7.85, 109430], [9.85, 203150]], married: [[5.35, 0], [6.8, 48700], [7.85, 193480], [9.85, 337930]], std: [15300, 30600] },
+  { slug: "missouri", name: "Missouri", abbr: "MO", kind: "progressive", single: [[2, 1348], [2.5, 2696], [3, 4044], [3.5, 5392], [4, 6740], [4.5, 8088], [4.7, 9436]], married: [[2, 1348], [2.5, 2696], [3, 4044], [3.5, 5392], [4, 6740], [4.5, 8088], [4.7, 9436]], std: [16100, 32200], note: "Kansas City and St. Louis levy a 1% local earnings tax (not included here)." },
+  { slug: "montana", name: "Montana", abbr: "MT", kind: "progressive", single: [[4.7, 0], [5.65, 47500]], married: [[4.7, 0], [5.65, 95000]], std: [16100, 32200] },
+  { slug: "nebraska", name: "Nebraska", abbr: "NE", kind: "progressive", single: [[2.46, 0], [3.51, 4130], [4.55, 24760]], married: [[2.46, 0], [3.51, 8250], [4.55, 49530]], std: [8850, 17700] },
+  { slug: "new-jersey", name: "New Jersey", abbr: "NJ", kind: "progressive", single: [[1.4, 0], [1.75, 20000], [3.5, 35000], [5.53, 40000], [6.37, 75000], [8.97, 500000], [10.75, 1000000]], married: [[1.4, 0], [1.75, 20000], [2.45, 50000], [3.5, 70000], [5.53, 80000], [6.37, 150000], [8.97, 500000], [10.75, 1000000]], std: [0, 0] },
+  { slug: "new-mexico", name: "New Mexico", abbr: "NM", kind: "progressive", single: [[1.5, 0], [3.2, 5500], [4.3, 16500], [4.7, 33500], [4.9, 66500], [5.9, 210000]], married: [[1.5, 0], [3.2, 8000], [4.3, 25000], [4.7, 50000], [4.9, 100000], [5.9, 315000]], std: [16100, 32200] },
+  { slug: "new-york", name: "New York", abbr: "NY", kind: "progressive", single: [[3.9, 0], [4.4, 8500], [5.15, 11700], [5.4, 13900], [5.9, 80650], [6.85, 215400], [9.65, 1077550], [10.3, 5000000], [10.9, 25000000]], married: [[3.9, 0], [4.4, 17150], [5.15, 23600], [5.4, 27900], [5.9, 161550], [6.85, 323200], [9.65, 2155350], [10.3, 5000000], [10.9, 25000000]], std: [8000, 16050], note: "New York City and Yonkers residents owe an additional local income tax (not included here)." },
+  { slug: "north-dakota", name: "North Dakota", abbr: "ND", kind: "progressive", single: [[1.95, 48475], [2.5, 244825]], married: [[1.95, 80975], [2.5, 298075]], std: [16100, 32200] },
+  { slug: "ohio", name: "Ohio", abbr: "OH", kind: "progressive", single: [[0, 0], [2.75, 26050]], married: [[0, 0], [2.75, 26050]], std: [0, 0], note: "Ohio applies its flat 2.75% rate to income above about $26,050; income below that is untaxed. Many Ohio cities also levy a local income tax (not included here)." },
+  { slug: "oklahoma", name: "Oklahoma", abbr: "OK", kind: "progressive", single: [[0, 0], [2.5, 3750], [3.5, 4900], [4.5, 7200]], married: [[0, 0], [2.5, 7500], [3.5, 9800], [4.5, 14400]], std: [6350, 12700] },
+  { slug: "oregon", name: "Oregon", abbr: "OR", kind: "progressive", single: [[4.75, 0], [6.75, 4550], [8.75, 11400], [9.9, 125000]], married: [[4.75, 0], [6.75, 9100], [8.75, 22800], [9.9, 250000]], std: [2910, 5820] },
+  { slug: "rhode-island", name: "Rhode Island", abbr: "RI", kind: "progressive", single: [[3.75, 0], [4.75, 82050], [5.99, 186450]], married: [[3.75, 0], [4.75, 82050], [5.99, 186450]], std: [11200, 22400] },
+  { slug: "south-carolina", name: "South Carolina", abbr: "SC", kind: "progressive", single: [[0, 0], [3, 3640], [6, 18230]], married: [[0, 0], [3, 3640], [6, 18230]], std: [16100, 32200] },
+  { slug: "vermont", name: "Vermont", abbr: "VT", kind: "progressive", single: [[3.35, 0], [6.6, 49400], [7.6, 119700], [8.75, 249700]], married: [[3.35, 0], [6.6, 82500], [7.6, 199450], [8.75, 304000]], std: [7650, 15300] },
+  { slug: "virginia", name: "Virginia", abbr: "VA", kind: "progressive", single: [[2, 0], [3, 3000], [5, 5000], [5.75, 17000]], married: [[2, 0], [3, 3000], [5, 5000], [5.75, 17000]], std: [8750, 17500] },
   { slug: "west-virginia", name: "West Virginia", abbr: "WV", kind: "progressive", single: [[2.22, 0], [2.96, 10000], [3.33, 25000], [4.44, 40000], [4.82, 60000]], married: [[2.22, 0], [2.96, 10000], [3.33, 25000], [4.44, 40000], [4.82, 60000]], std: [0, 0] },
-  { slug: "wisconsin", name: "Wisconsin", abbr: "WI", kind: "progressive", single: [[3.5, 0], [4.4, 14680], [5.3, 29370], [7.65, 323290]], married: [[3.5, 0], [4.4, 19580], [5.3, 39150], [7.65, 431060]], std: [13560, 25110] },
+  { slug: "wisconsin", name: "Wisconsin", abbr: "WI", kind: "progressive", single: [[3.5, 0], [4.4, 15110], [5.3, 51950], [7.65, 332720]], married: [[3.5, 0], [4.4, 20150], [5.3, 69260], [7.65, 443630]], std: [13960, 25840] },
 ];
 
 // ---- Content generation (data-driven, differentiated per state) ----

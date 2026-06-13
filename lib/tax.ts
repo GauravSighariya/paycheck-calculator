@@ -1,4 +1,4 @@
-// Tax engine — Tax Year 2025 (federal) + latest published state rates.
+// Tax engine — Tax Year 2026 (federal, IRS Rev. Proc. 2025-32) + 2026 state rates.
 // Figures are estimates for planning only, NOT tax advice. Each constant is
 // kept in this one file so it is trivial to update each tax year.
 
@@ -32,38 +32,38 @@ export function applyBrackets(income: number, brackets: Bracket[]): number {
   return tax;
 }
 
-// ---------- Federal (2025) ----------
+// ---------- Federal (2026) ----------
 
 export const FEDERAL = {
-  year: 2025,
-  standardDeduction: { single: 15000, married: 30000 } as Record<FilingStatus, number>,
+  year: 2026,
+  standardDeduction: { single: 16100, married: 32200 } as Record<FilingStatus, number>,
   brackets: {
     single: [
-      { upTo: 11925, rate: 0.1 },
-      { upTo: 48475, rate: 0.12 },
-      { upTo: 103350, rate: 0.22 },
-      { upTo: 197300, rate: 0.24 },
-      { upTo: 250525, rate: 0.32 },
-      { upTo: 626350, rate: 0.35 },
+      { upTo: 12400, rate: 0.1 },
+      { upTo: 50400, rate: 0.12 },
+      { upTo: 105700, rate: 0.22 },
+      { upTo: 201775, rate: 0.24 },
+      { upTo: 256225, rate: 0.32 },
+      { upTo: 640600, rate: 0.35 },
       { upTo: null, rate: 0.37 },
     ],
     married: [
-      { upTo: 23850, rate: 0.1 },
-      { upTo: 96950, rate: 0.12 },
-      { upTo: 206700, rate: 0.22 },
-      { upTo: 394600, rate: 0.24 },
-      { upTo: 501050, rate: 0.32 },
-      { upTo: 751600, rate: 0.35 },
+      { upTo: 24800, rate: 0.1 },
+      { upTo: 100800, rate: 0.12 },
+      { upTo: 211400, rate: 0.22 },
+      { upTo: 403550, rate: 0.24 },
+      { upTo: 512450, rate: 0.32 },
+      { upTo: 768700, rate: 0.35 },
       { upTo: null, rate: 0.37 },
     ],
   } as Record<FilingStatus, Bracket[]>,
 };
 
-// ---------- FICA (2025) ----------
+// ---------- FICA (2026) ----------
 
 export const FICA = {
   socialSecurityRate: 0.062,
-  socialSecurityWageBase: 176100, // 2025 wage base
+  socialSecurityWageBase: 184500, // 2026 wage base
   medicareRate: 0.0145,
   additionalMedicareRate: 0.009,
   additionalMedicareThreshold: { single: 200000, married: 250000 } as Record<FilingStatus, number>,

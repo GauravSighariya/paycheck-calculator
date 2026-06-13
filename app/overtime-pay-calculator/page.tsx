@@ -4,7 +4,7 @@ import OvertimeCalculator from "@/components/OvertimeCalculator";
 import { SITE_URL } from "@/lib/site";
 import { EXTRA_TOOLS } from "@/lib/tools";
 
-const TITLE = "Overtime Pay Calculator — Time-and-a-Half Pay (2025)";
+const TITLE = "Overtime Pay Calculator — Time-and-a-Half Pay (2026)";
 const DESC =
   "Calculate your overtime pay with time-and-a-half or double time. See your weekly gross, overtime premium, annual total, and estimated take-home pay.";
 
