@@ -1,22 +1,44 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
-import { SITE_URL, SITE_NAME } from "@/lib/site";
+import { SITE_URL, SITE_NAME, BRAND } from "@/lib/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 
+const DEFAULT_TITLE = "Take-Home Pay Calculator — Paycheck Estimator by State (2025)";
+const DEFAULT_DESC =
+  "Free take-home pay calculator. See your net paycheck after federal, state, Social Security, and Medicare taxes for 2025 — by state, salary, and filing status.";
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Take-Home Pay Calculator — Paycheck Estimator by State (2025)",
+    default: DEFAULT_TITLE,
     template: "%s | Take-Home Pay Calculator",
   },
-  description:
-    "Free take-home pay calculator. See your net paycheck after federal, state, Social Security, and Medicare taxes for 2025 — by state, salary, and filing status.",
+  description: DEFAULT_DESC,
+  applicationName: BRAND,
+  openGraph: {
+    type: "website",
+    siteName: BRAND,
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESC,
+    url: SITE_URL,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESC,
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#4f46e5",
 };
 
 export default function RootLayout({

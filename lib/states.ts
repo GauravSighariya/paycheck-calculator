@@ -191,3 +191,15 @@ export const STATE_SLUGS = Object.values(STATES)
 export function getState(slug: string): StateInfo | undefined {
   return STATES[slug];
 }
+
+/** Human-friendly summary of a state's income tax structure (null if no tax). */
+export function rateSummary(
+  info: StateInfo,
+): { isFlat: boolean; low: number; top: number; brackets: number } | null {
+  if (!info.hasIncomeTax || !info.brackets) return null;
+  const rates = info.brackets.single.map((b) => b.rate).filter((r) => r > 0);
+  if (rates.length === 0) return null;
+  const low = Math.min(...rates) * 100;
+  const top = Math.max(...rates) * 100;
+  return { isFlat: low === top, low, top, brackets: rates.length };
+}
