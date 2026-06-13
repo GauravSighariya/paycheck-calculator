@@ -2,16 +2,15 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
+import { SITE_URL, SITE_NAME } from "@/lib/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 
-const SITE_NAME = "Take-Home Pay Calculator";
-
 export const metadata: Metadata = {
-  metadataBase: new URL("https://example.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Take-Home Pay Calculator — Paycheck Estimator by State (2025)",
     template: "%s | Take-Home Pay Calculator",
