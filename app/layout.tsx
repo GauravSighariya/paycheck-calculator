@@ -65,7 +65,7 @@ gtag('config', '${GA_ID}');`}
         <header className="border-b border-slate-200 bg-white">
           <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
             <Link href="/" className="flex items-center gap-2 font-semibold text-slate-900">
-              <span className="grid h-8 w-8 place-items-center rounded-lg bg-indigo-600 text-white">$</span>
+              <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 font-bold text-white">$</span>
               {SITE_NAME}
             </Link>
             <nav className="text-sm text-slate-500">2026 tax year</nav>
