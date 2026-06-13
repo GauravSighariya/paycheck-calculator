@@ -2,6 +2,7 @@ import Link from "next/link";
 import PaycheckCalculator from "@/components/PaycheckCalculator";
 import { STATES } from "@/lib/states";
 import { SITE_URL, BRAND } from "@/lib/site";
+import { EXTRA_TOOLS } from "@/lib/tools";
 
 const FAQ = [
   {
@@ -68,6 +69,22 @@ export default function Home() {
       </section>
 
       <PaycheckCalculator initialStateSlug="texas" />
+
+      <section>
+        <h2 className="mb-3 text-xl font-semibold text-slate-900">More pay calculators</h2>
+        <div className="grid gap-3 sm:grid-cols-3">
+          {EXTRA_TOOLS.map((t) => (
+            <Link
+              key={t.slug}
+              href={`/${t.slug}`}
+              className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:border-indigo-300"
+            >
+              <span className="font-semibold text-slate-900">{t.name}</span>
+              <span className="mt-1 block text-sm text-slate-500">{t.short}</span>
+            </Link>
+          ))}
+        </div>
+      </section>
 
       <section>
         <h2 className="mb-3 text-xl font-semibold text-slate-900">Paycheck calculators by state</h2>
