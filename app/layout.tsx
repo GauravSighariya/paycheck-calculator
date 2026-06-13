@@ -36,9 +36,17 @@ export default function RootLayout({
         </header>
         <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8">{children}</main>
         <footer className="border-t border-slate-200 bg-white">
-          <div className="mx-auto max-w-5xl px-4 py-6 text-xs text-slate-500">
-            Estimates for planning only — not tax or financial advice. Figures use 2025 federal rates and the
-            latest published state rates and may not reflect local taxes or every deduction.
+          <div className="mx-auto max-w-5xl space-y-3 px-4 py-6">
+            <nav className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-slate-600">
+              <Link href="/" className="hover:text-indigo-600">Home</Link>
+              <Link href="/about" className="hover:text-indigo-600">About</Link>
+              <Link href="/contact" className="hover:text-indigo-600">Contact</Link>
+              <Link href="/privacy" className="hover:text-indigo-600">Privacy Policy</Link>
+            </nav>
+            <p className="text-xs text-slate-500">
+              Estimates for planning only — not tax or financial advice. Figures use 2025 federal rates and the
+              latest published state rates and may not reflect local taxes or every deduction.
+            </p>
           </div>
         </footer>
       </body>

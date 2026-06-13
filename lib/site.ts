@@ -5,3 +5,5 @@ export const SITE_URL =
   "https://paycheck-calculator-vert.vercel.app";
 
 export const SITE_NAME = "Take-Home Pay Calculator";
+export const BRAND = "MyNetPaycheck";
+export const CONTACT_EMAIL = "hello@mynetpaycheck.com";
