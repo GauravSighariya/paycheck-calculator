@@ -10,3 +10,7 @@ export const CONTACT_EMAIL = "hello@mynetpaycheck.com";
 
 // Google Analytics 4 measurement ID (public; embedded in client HTML).
 export const GA_ID = "G-3WVGGCWTTE";
+
+// Microsoft Clarity project ID (public; embedded in client HTML).
+export const CLARITY_ID = "x6qy7v4fbq";
+
